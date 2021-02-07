@@ -1,0 +1,44 @@
+package com.nurhidayaatt.favorite.presentation.favorite
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.nurhidayaatt.favorite.databinding.FavoriteFragmentBinding
+import com.nurhidayaatt.favorite.presentation.di.favoriteModule
+import org.koin.core.context.loadKoinModules
+
+class FavoriteFragment : Fragment() {
+
+    private var _binding: FavoriteFragmentBinding? = null
+    private val binding get() = _binding
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FavoriteFragmentBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        loadKoinModules(favoriteModule)
+        val sectionsPagerAdapter: SectionsPagerAdapter? = context?.let {
+            SectionsPagerAdapter(
+                it,
+                childFragmentManager
+            )
+        }
+        binding?.let { binding ->
+            binding.viewPager.adapter = sectionsPagerAdapter
+            binding.tabs.setupWithViewPager(binding.viewPager)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}

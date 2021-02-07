@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movies">Movies</string>
+    <string name="tv_shows">TV Shows</string>
+    <string name="detail">Detail</string>
+
+    <string name="sort_by">Sort by:</string>
+    <string name="empty_data">Empty Data</string>
+    <string-array name="filter_options">
+        <item>ID</item>
+        <item>Date</item>
+        <item>Rating</item>
+    </string-array>
+
+    <string name="favorite">Favorite</string>
+    <string name="poster">Poster</string>
+    <string name="title">Title</string>
+    <string name="release_date">Release Date</string>
+    <string name="poster_detail">Poster Detail</string>
+    <string name="storyline">Storyline</string>
+    <string name="vote_average">9.5</string>
+    <string name="vote_count">1000</string>
+    <string name="fab_favorite">FAB Favorite</string>
+    <string name="format_url">%1$s%2$s</string>
+
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urna condimentum mattis pellentesque id nibh tortor id
+        aliquet. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Tincidunt vitae semper quis lectus nulla at volutpat diam.
+        Odio tempor orci dapibus ultrices in iaculis nunc sed. Ultrices vitae auctor eu augue ut lectus. Orci sagittis eu volutpat odio facilisis mauris. Vitae congue mauris rhoncus aenean vel elit scelerisque
+        mauris pellentesque. Enim ut sem viverra aliquet eget sit amet. Vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Ultrices tincidunt arcu non sodales neque sodales ut etiam.
+        Curabitur vitae nunc sed velit dignissim sodales ut. Magna sit amet purus gravida quis. Vitae justo eget magna fermentum iaculis eu non diam. Netus et malesuada fames ac turpis egestas sed tempus urna.
+        Sagittis orci a scelerisque purus semper eget duis at tellus. Tellus id interdum velit laoreet id donec. In eu mi bibendum neque egestas congue quisque. Vitae sapien pellentesque habitant morbitristique.
+        Erat nam at lectus urna duis convallis tellus id. Cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices. Sem viverra
+        aliquet eget sit amet. Nisl nunc mi ipsum faucibus. Dignissim suspendisse in est ante in nibh mauris cursus. Maecenas accumsan lacus vel facilisis volutpat est velit egestas dui. Integer feugiat
+        scelerisque varius morbi enim nunc faucibus. Leo a diam sollicitudin tempor id eu nisl nunc mi. Eu consequat ac felis donec et odio pellentesque diam volutpat. Scelerisque mauris pellentesque pulvinar
+        pellentesque habitant morbi. Et ligula ullamcorper malesuada proin libero nunc. Adipiscing enim eu turpis egestas pretium aenean pharetra magna ac. Netus et malesuada fames ac turpis. Nunc sed id semper
+        risus in hendrerit gravida rutrum. Mattis molestie a iaculis at. Nec nam aliquam sem et. Sed vulputate mi sit amet mauris commodo quis imperdiet massa. Ut faucibus pulvinar elementum integer enim neque
+        volutpat ac. Turpis tincidunt id aliquet risus feugiat in ante.</string>
+</resources>

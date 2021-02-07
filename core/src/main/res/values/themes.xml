@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextTitle" parent="Text">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+    </style>
+
+    <style name="TextDescription" parent="Text">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="drawableTint">@color/black</item>
+    </style>
+
+    <style name="TabStyle">
+        <item name="tabIndicatorColor">@color/white</item>
+        <item name="android:background">@color/purple_500</item>
+    </style>
+</resources>
