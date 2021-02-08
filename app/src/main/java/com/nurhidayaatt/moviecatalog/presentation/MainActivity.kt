@@ -14,8 +14,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.nurhidayaatt.core.databinding.ActivityMainBinding
 import com.nurhidayaatt.moviecatalog.R
+import com.nurhidayaatt.moviecatalog.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

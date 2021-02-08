@@ -7,12 +7,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
-import com.nurhidayaatt.core.databinding.DetailFragmentBinding
 import com.nurhidayaatt.core.domain.model.Movie
 import com.nurhidayaatt.core.domain.model.TvShow
 import com.nurhidayaatt.core.utils.Constants.BACKDROP_BASE_URL
 import com.nurhidayaatt.core.utils.Constants.POSTER_BASE_URL
 import com.nurhidayaatt.moviecatalog.R
+import com.nurhidayaatt.moviecatalog.databinding.DetailFragmentBinding
 import com.nurhidayaatt.moviecatalog.utils.formatString
 import com.nurhidayaatt.moviecatalog.utils.showSnackBar
 import org.koin.android.ext.android.getKoin

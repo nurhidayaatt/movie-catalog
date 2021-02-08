@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nurhidayaatt.core.data.source.Resource
-import com.nurhidayaatt.core.databinding.TvShowFragmentBinding
 import com.nurhidayaatt.core.presentation.SortType
 import com.nurhidayaatt.core.presentation.adapter.TvShowAdapter
+import com.nurhidayaatt.moviecatalog.databinding.TvShowFragmentBinding
 import com.nurhidayaatt.moviecatalog.utils.showSnackBar
 import org.koin.android.ext.android.getKoin
 import org.koin.android.viewmodel.scope.viewModel

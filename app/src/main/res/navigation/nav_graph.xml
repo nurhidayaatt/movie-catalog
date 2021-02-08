@@ -21,16 +21,6 @@
             android:defaultValue="@null" />
     </fragment>
     <fragment
-        android:id="@+id/navigation_favorite"
-        android:name="com.nurhidayaatt.favorite.presentation.favorite.FavoriteFragment"
-        app:moduleName="Movie_Catalog.favorite"
-        android:label="@string/favorite"
-        tools:layout="@layout/favorite_fragment" >
-        <action
-            android:id="@+id/action_navigation_favorite_to_navigation_detail"
-            app:destination="@id/navigation_detail" />
-    </fragment>
-    <fragment
         android:id="@+id/navigation_movie"
         android:name="com.nurhidayaatt.moviecatalog.presentation.movie.MovieFragment"
         android:label="@string/movies"
@@ -46,6 +36,16 @@
         tools:layout="@layout/tv_show_fragment" >
         <action
             android:id="@+id/action_navigation_tv_show_to_navigation_detail"
+            app:destination="@id/navigation_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_favorite"
+        android:name="com.nurhidayaatt.favorite.presentation.favorite.FavoriteFragment"
+        app:moduleName="Movie_Catalog.favorite"
+        android:label="@string/favorite"
+        tools:layout="@layout/favorite_fragment" >
+        <action
+            android:id="@+id/action_navigation_favorite_to_navigation_detail"
             app:destination="@id/navigation_detail" />
     </fragment>
 </navigation>
