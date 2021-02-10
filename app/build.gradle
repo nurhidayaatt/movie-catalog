@@ -21,10 +21,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -50,5 +53,6 @@ dependencies {
     // Dynamic Features Navigation Component
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigation_version"
 
+    // Leak Canary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 }

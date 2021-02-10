@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class MainRepository (
     private val remoteDataSource: RemoteDataSource,
@@ -55,6 +56,7 @@ class MainRepository (
                 }.map { Resource.Success(it) })
             } catch (e: Exception) {
                 emit(Resource.Error<List<Movie>>(e.message.toString(), null))
+                Timber.e(e)
             }
         }
     }
@@ -93,6 +95,7 @@ class MainRepository (
                     }.map { Resource.Success(it) })
             } catch (e: Exception) {
                 emit(Resource.Error<List<TvShow>>(e.message.toString(), null))
+                Timber.e(e)
             }
         }
     }

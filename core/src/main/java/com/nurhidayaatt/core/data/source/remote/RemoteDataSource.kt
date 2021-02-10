@@ -24,7 +24,7 @@ class RemoteDataSource(private val apiService: ApiService) {
                 }
             } catch (e : Exception) {
                 emit(ApiResponse.Error(e.message.toString()))
-                Timber.e(e.toString())
+                Timber.e(e)
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -41,7 +41,7 @@ class RemoteDataSource(private val apiService: ApiService) {
                 }
             } catch (e : Exception) {
                 emit(ApiResponse.Error(e.message.toString()))
-                Timber.e(e.toString())
+                Timber.e(e)
             }
         }.flowOn(Dispatchers.IO)
     }

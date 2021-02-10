@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nurhidayaatt.core.data.source.Resource
 import com.nurhidayaatt.core.presentation.adapter.MovieAdapter
 import com.nurhidayaatt.favorite.databinding.FragmentMovieFavoriteBinding
+import com.nurhidayaatt.favorite.presentation.di.favoriteModule
 import com.nurhidayaatt.favorite.presentation.favorite.FavoriteFragmentDirections
 import com.nurhidayaatt.favorite.presentation.favorite.FavoriteViewModel
 import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.core.context.loadKoinModules
 
 class MovieFavoriteFragment : Fragment() {
 
@@ -27,12 +29,12 @@ class MovieFavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMovieFavoriteBinding.inflate(inflater, container, false)
+        loadKoinModules(favoriteModule)
         return binding?.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         viewModel.movies.observe(viewLifecycleOwner) { response ->
             binding?.let { binding ->
@@ -44,11 +46,11 @@ class MovieFavoriteFragment : Fragment() {
                         binding.progressBar.visibility = View.GONE
                         response.data?.let {
                             if (!it.isNullOrEmpty()) {
-                                binding.tvEmptyData.visibility = View.GONE
+                                showViewEmptyData(false)
                                 movieAdapter.submitList(it)
                                 movieAdapter.notifyDataSetChanged()
                             } else {
-                                binding.tvEmptyData.visibility = View.VISIBLE
+                                showViewEmptyData(true)
                             }
                         }
                     }
@@ -75,6 +77,18 @@ class MovieFavoriteFragment : Fragment() {
         movieAdapter.setOnItemClickListener {
             val action = FavoriteFragmentDirections.actionNavigationFavoriteToNavigationDetail(movie = it)
             findNavController().navigate(action)
+        }
+    }
+
+    private fun showViewEmptyData(state: Boolean) {
+        binding?.let { binding ->
+            if (state) {
+                binding.tvEmptyData.visibility = View.VISIBLE
+                binding.animationView.visibility = View.VISIBLE
+            } else {
+                binding.tvEmptyData.visibility = View.GONE
+                binding.animationView.visibility = View.GONE
+            }
         }
     }
 

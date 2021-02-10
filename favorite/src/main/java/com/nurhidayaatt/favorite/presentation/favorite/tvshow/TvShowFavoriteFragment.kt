@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nurhidayaatt.core.data.source.Resource
 import com.nurhidayaatt.core.presentation.adapter.TvShowAdapter
 import com.nurhidayaatt.favorite.databinding.FragmentTvShowFavoriteBinding
+import com.nurhidayaatt.favorite.presentation.di.favoriteModule
 import com.nurhidayaatt.favorite.presentation.favorite.FavoriteFragmentDirections
 import com.nurhidayaatt.favorite.presentation.favorite.FavoriteViewModel
 import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.core.context.loadKoinModules
 
 class TvShowFavoriteFragment : Fragment() {
 
@@ -27,12 +29,12 @@ class TvShowFavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentTvShowFavoriteBinding.inflate(inflater, container, false)
+        loadKoinModules(favoriteModule)
         return binding?.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         viewModel.tvShows.observe(viewLifecycleOwner) { response ->
             binding?.let { binding ->
@@ -44,11 +46,11 @@ class TvShowFavoriteFragment : Fragment() {
                         binding.progressBar.visibility = View.GONE
                         response.data?.let {
                             if (!it.isNullOrEmpty()) {
-                                binding.tvEmptyData.visibility = View.GONE
+                                showViewEmptyData(false)
                                 tvShowAdapter.submitList(it)
                                 tvShowAdapter.notifyDataSetChanged()
                             } else {
-                                binding.tvEmptyData.visibility = View.VISIBLE
+                                showViewEmptyData(true)
                             }
                         }
                     }
@@ -78,6 +80,18 @@ class TvShowFavoriteFragment : Fragment() {
                     tvshow = it
                 )
             findNavController().navigate(action)
+        }
+    }
+
+    private fun showViewEmptyData(state: Boolean) {
+        binding?.let { binding ->
+            if (state) {
+                binding.tvEmptyData.visibility = View.VISIBLE
+                binding.animationView.visibility = View.VISIBLE
+            } else {
+                binding.tvEmptyData.visibility = View.GONE
+                binding.animationView.visibility = View.GONE
+            }
         }
     }
 

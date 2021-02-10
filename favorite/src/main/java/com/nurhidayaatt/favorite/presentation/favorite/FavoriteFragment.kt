@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.nurhidayaatt.favorite.databinding.FavoriteFragmentBinding
-import com.nurhidayaatt.favorite.presentation.di.favoriteModule
-import org.koin.core.context.loadKoinModules
 
 class FavoriteFragment : Fragment() {
 
@@ -22,9 +20,8 @@ class FavoriteFragment : Fragment() {
         return binding?.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        loadKoinModules(favoriteModule)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val sectionsPagerAdapter: SectionsPagerAdapter? = context?.let {
             SectionsPagerAdapter(
                 it,
