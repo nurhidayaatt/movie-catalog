@@ -4,6 +4,12 @@ orbs:
   android: circleci/android@0.2.1
 
 jobs:
+  deploy-job:
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "Mfuc6Y9UVYCtBlcNDuw9wAoSUsCECU50JO2UH0Dc2CE"
+
   build:
     executor: android/android
 
