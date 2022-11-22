@@ -21,16 +21,12 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
 
-    // Koin for Kotlin
-    implementation "org.koin:koin-core:$koin_version"
-    // Koin for Android
-    implementation "org.koin:koin-android:$koin_version"
-    // Koin Android Scope features
-    implementation "org.koin:koin-android-scope:$koin_version"
-    // Koin Android ViewModel features
-    implementation "org.koin:koin-android-viewmodel:$koin_version"
+    // Koin Core features
+    implementation "io.insert-koin:koin-core:$koin_core_version"
+    // Koin main features for Android
+    implementation "io.insert-koin:koin-android:$koin_android_version"
 
-    testImplementation "junit:junit:$junit_version"
+    testImplementation "junit:junit:4.13.2"
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 }

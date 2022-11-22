@@ -14,14 +14,14 @@ import com.nurhidayaatt.favorite.databinding.FragmentTvShowFavoriteBinding
 import com.nurhidayaatt.favorite.presentation.di.favoriteModule
 import com.nurhidayaatt.favorite.presentation.favorite.FavoriteFragmentDirections
 import com.nurhidayaatt.favorite.presentation.favorite.FavoriteViewModel
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.core.context.loadKoinModules
 
 class TvShowFavoriteFragment : Fragment() {
 
     private var _binding: FragmentTvShowFavoriteBinding? = null
     private val binding get() = _binding
-    private val viewModel: FavoriteViewModel by sharedViewModel()
+    private val viewModel: FavoriteViewModel by activityViewModel()
     private lateinit var tvShowAdapter: TvShowAdapter
 
     override fun onCreateView(
@@ -45,10 +45,10 @@ class TvShowFavoriteFragment : Fragment() {
                     is Resource.Success -> {
                         binding.progressBar.visibility = View.GONE
                         response.data?.let {
-                            if (!it.isNullOrEmpty()) {
+                            if (it.isNotEmpty()) {
                                 showViewEmptyData(false)
                                 tvShowAdapter.submitList(it)
-                                tvShowAdapter.notifyDataSetChanged()
+                                tvShowAdapter.notifyItemRangeChanged(0, it.size)
                             } else {
                                 showViewEmptyData(true)
                             }

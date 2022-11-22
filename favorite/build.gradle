@@ -7,15 +7,11 @@ plugins {
 apply from: '../shared_dependencies.gradle'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdk 33
+    buildToolsVersion '33.0.0 rc4'
 
     defaultConfig {
-        applicationId "com.nurhidayaatt.favorite"
         minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,6 +36,4 @@ dependencies {
 
     // Lottie
     implementation "com.airbnb.android:lottie:$lottie_version"
-
-    androidTestImplementation 'androidx.annotation:annotation:1.1.0'
 }

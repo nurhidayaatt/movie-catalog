@@ -1,35 +1,28 @@
 package com.nurhidayaatt.favorite.presentation.favorite
 
-import android.content.Context
-import androidx.annotation.Nullable
-import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import com.nurhidayaatt.favorite.R
-import com.nurhidayaatt.favorite.presentation.favorite.movie.MovieFavoriteFragment
-import com.nurhidayaatt.favorite.presentation.favorite.tvshow.TvShowFavoriteFragment
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class SectionsPagerAdapter(fragment: Fragment):
+    FragmentStateAdapter(fragment) {
 
-    @StringRes
-    private val title = intArrayOf(R.string.movies, R.string.tv_shows)
+    private val fragmentList: MutableList<Fragment> = mutableListOf()
+    private val fragmentTitleList: MutableList<String> = mutableListOf()
 
-    override fun getItem(position: Int): Fragment {
-        var fragment: Fragment? = null
-        when (position) {
-            0 -> fragment = MovieFavoriteFragment()
-            1 -> fragment = TvShowFavoriteFragment()
-        }
-        return fragment as Fragment
+    fun getTabTitle(position: Int): String {
+        return fragmentTitleList[position]
     }
 
-    @Nullable
-    override fun getPageTitle(position: Int): CharSequence {
-        return mContext.resources.getString(title[position])
+    fun addFragment(fragment: Fragment, title: String) {
+        fragmentList.add(fragment)
+        fragmentTitleList.add(title)
     }
 
-    override fun getCount(): Int {
-        return 2
+    override fun getItemCount(): Int {
+        return fragmentList.size
+    }
+
+    override fun createFragment(position: Int): Fragment {
+        return fragmentList[position]
     }
 }

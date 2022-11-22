@@ -25,17 +25,21 @@ class MainRepository (
     override fun getAllMovie(sortType: String): Flow<Resource<List<Movie>>> =
         object : NetworkBoundResource<List<Movie>, List<MovieResponse>>() {
             override fun loadFromDB(): Flow<List<Movie>> {
+                Timber.d("LoadFromDB")
                 return localDataSource.getAllMovie(sortType).map {
                     DataMapper.mapMovieEntitiesToDomain(it)
                 }
             }
 
-            override fun shouldFetch(data: List<Movie>?): Boolean = data == null || data.isEmpty()
+            override fun shouldFetch(data: List<Movie>?): Boolean = data.isNullOrEmpty()
 
-            override suspend fun createCall(): Flow<ApiResponse<List<MovieResponse>>> =
-                remoteDataSource.getAllMovie()
+            override suspend fun createCall(): Flow<ApiResponse<List<MovieResponse>>> {
+                Timber.d("LoadFromAPI")
+                return remoteDataSource.getAllMovie()
+            }
 
             override suspend fun saveCallResult(data: List<MovieResponse>) {
+                Timber.d("SaveToDB")
                 val movieList = DataMapper.mapMovieResponsesToEntities(data)
                 localDataSource.insertMovie(movieList)
             }
@@ -55,7 +59,7 @@ class MainRepository (
                     DataMapper.mapMovieEntitiesToDomain(it)
                 }.map { Resource.Success(it) })
             } catch (e: Exception) {
-                emit(Resource.Error<List<Movie>>(e.message.toString(), null))
+                emit(Resource.Error(e.message.toString(), null))
                 Timber.e(e)
             }
         }
@@ -94,7 +98,7 @@ class MainRepository (
                         DataMapper.mapTvShowEntitiesToDomain(it)
                     }.map { Resource.Success(it) })
             } catch (e: Exception) {
-                emit(Resource.Error<List<TvShow>>(e.message.toString(), null))
+                emit(Resource.Error(e.message.toString(), null))
                 Timber.e(e)
             }
         }

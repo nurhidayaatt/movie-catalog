@@ -9,13 +9,13 @@ plugins {
 apply from: '../shared_dependencies.gradle'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdk 33
+    buildToolsVersion '33.0.0 rc4'
 
     defaultConfig {
         applicationId "com.nurhidayaatt.moviecatalog"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -54,5 +54,5 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigation_version"
 
     // Leak Canary
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 }

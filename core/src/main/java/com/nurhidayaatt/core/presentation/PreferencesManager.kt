@@ -1,10 +1,11 @@
 package com.nurhidayaatt.core.presentation
 
 import android.content.Context
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.createDataStore
+import androidx.datastore.preferences.preferencesDataStoreFile
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import timber.log.Timber
@@ -12,7 +13,9 @@ import java.io.IOException
 
 class PreferencesManager(context: Context) {
 
-    private val dataStore = context.createDataStore("user_preferences")
+    private val dataStore = PreferenceDataStoreFactory.create(
+        produceFile = { context.preferencesDataStoreFile("user_preferences") }
+    )
 
     val preferencesFlow = dataStore.data
         .catch { exception ->

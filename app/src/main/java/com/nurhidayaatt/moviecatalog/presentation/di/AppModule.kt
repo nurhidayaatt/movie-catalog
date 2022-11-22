@@ -7,8 +7,7 @@ import com.nurhidayaatt.moviecatalog.presentation.detail.DetailViewModel
 import com.nurhidayaatt.moviecatalog.presentation.movie.MovieViewModel
 import com.nurhidayaatt.moviecatalog.presentation.tvshow.TvShowViewModel
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.viewmodel.dsl.viewModel
-import org.koin.core.qualifier.named
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val useCaseModule = module {
@@ -17,9 +16,7 @@ val useCaseModule = module {
 
 val viewModelModule = module {
     single { PreferencesManager(androidContext()) }
-    scope(named("ViewModel")) {
         viewModel { MovieViewModel(get(), get()) }
         viewModel { TvShowViewModel(get(), get()) }
         viewModel { DetailViewModel(get()) }
-    }
 }

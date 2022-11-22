@@ -13,16 +13,13 @@ import com.nurhidayaatt.core.presentation.SortType
 import com.nurhidayaatt.core.presentation.adapter.TvShowAdapter
 import com.nurhidayaatt.moviecatalog.databinding.TvShowFragmentBinding
 import com.nurhidayaatt.moviecatalog.utils.showSnackBar
-import org.koin.android.ext.android.getKoin
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
+import org.koin.android.ext.android.inject
 
 class TvShowFragment : Fragment() {
 
     private var _binding: TvShowFragmentBinding? = null
     private val binding get() = _binding
-    private val viewModelScope = getKoin().getOrCreateScope("Scope2", named("ViewModel"))
-    private val viewModel: TvShowViewModel by viewModelScope.viewModel(this)
+    private val viewModel: TvShowViewModel by inject()
     private lateinit var tvShowAdapter: TvShowAdapter
 
     override fun onCreateView(

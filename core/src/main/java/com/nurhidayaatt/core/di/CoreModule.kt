@@ -28,7 +28,9 @@ val databaseModule = module {
         Room.databaseBuilder(
             androidContext(),
             MainDatabase::class.java, DATABASE_NAME
-        ).fallbackToDestructiveMigration().openHelperFactory(factory).build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+        .build()
     }
 }
 
@@ -42,9 +44,10 @@ val networkModule = module {
             .add(hostname, "sha256/KwccWaCgrnaw6tsrrSO61FgLacNgG2MMLq8GE6+oP5I=")
             .build()
         OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .connectTimeout(120, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
+            .connectTimeout(5, TimeUnit.MINUTES)
+            .readTimeout(5, TimeUnit.MINUTES)
+            .writeTimeout(5, TimeUnit.MINUTES)
             .certificatePinner(certificatePinner)
             .build()
     }

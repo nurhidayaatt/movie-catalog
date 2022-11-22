@@ -1,6 +1,5 @@
 package com.nurhidayaatt.core.data.source.local.entity
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,7 +7,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "movie")
 data class MovieEntity(
     @PrimaryKey
-    @NonNull
     val id: Int,
     val overview: String? = null,
     @ColumnInfo(name = "backdrop_path")
