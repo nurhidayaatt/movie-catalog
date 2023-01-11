@@ -12,7 +12,7 @@ import com.nurhidayaatt.core.databinding.ItemListBinding
 import com.nurhidayaatt.core.domain.model.Movie
 import com.nurhidayaatt.core.utils.Constants.POSTER_BASE_URL
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     private val diffCallback = object : DiffUtil.ItemCallback<Movie>() {
 

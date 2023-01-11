@@ -45,7 +45,7 @@
 }
 
 # Ignore annotation used for build tooling.
--dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+#-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 
 # Ignore JSR 305 annotations for embedding nullability information.
 -dontwarn javax.annotation.**
@@ -85,8 +85,3 @@ public *;
 ##---------------Begin: proguard configuration for RxJava ----------
 # Uncomment if you use RxJava
 #-dontwarn java.util.concurrent.Flow*
-
-
-# Navigation component for passing argument data class
--keep class com.nurhidayaatt.core.domain.model.Movie
--keep class com.nurhidayaatt.core.domain.model.TvShow

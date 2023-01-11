@@ -14,14 +14,14 @@ import com.nurhidayaatt.favorite.databinding.FragmentMovieFavoriteBinding
 import com.nurhidayaatt.favorite.presentation.di.favoriteModule
 import com.nurhidayaatt.favorite.presentation.favorite.FavoriteFragmentDirections
 import com.nurhidayaatt.favorite.presentation.favorite.FavoriteViewModel
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.core.context.loadKoinModules
 
 class MovieFavoriteFragment : Fragment() {
 
     private var _binding: FragmentMovieFavoriteBinding? = null
     private val binding get() = _binding
-    private val viewModel: FavoriteViewModel by sharedViewModel()
+    private val viewModel: FavoriteViewModel by activityViewModel()
     private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
@@ -45,10 +45,10 @@ class MovieFavoriteFragment : Fragment() {
                     is Resource.Success -> {
                         binding.progressBar.visibility = View.GONE
                         response.data?.let {
-                            if (!it.isNullOrEmpty()) {
+                            if (it.isNotEmpty()) {
                                 showViewEmptyData(false)
                                 movieAdapter.submitList(it)
-                                movieAdapter.notifyDataSetChanged()
+                                movieAdapter.notifyItemRangeChanged(0, it.size)
                             } else {
                                 showViewEmptyData(true)
                             }

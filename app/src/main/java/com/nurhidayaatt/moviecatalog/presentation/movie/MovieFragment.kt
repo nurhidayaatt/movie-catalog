@@ -13,16 +13,13 @@ import com.nurhidayaatt.core.presentation.SortType
 import com.nurhidayaatt.core.presentation.adapter.MovieAdapter
 import com.nurhidayaatt.moviecatalog.databinding.MovieFragmentBinding
 import com.nurhidayaatt.moviecatalog.utils.showSnackBar
-import org.koin.android.ext.android.getKoin
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
+import org.koin.android.ext.android.inject
 
 class MovieFragment : Fragment() {
 
     private var _binding: MovieFragmentBinding? = null
     private val binding get() = _binding
-    private val viewModelScope = getKoin().getOrCreateScope("Scope1", named("ViewModel"))
-    private val viewModel: MovieViewModel by viewModelScope.viewModel(this)
+    private val viewModel: MovieViewModel by inject()
     private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
@@ -50,7 +47,7 @@ class MovieFragment : Fragment() {
                     }
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
-                        binding.mainLayout.showSnackBar(response.message.toString())
+                        binding.root.showSnackBar(response.message.toString())
                     }
                 }
             }

@@ -2,11 +2,12 @@ package com.nurhidayaatt.core.data.source.local.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.nurhidayaatt.core.data.source.local.entity.FavoriteEntity
 import com.nurhidayaatt.core.data.source.local.entity.MovieEntity
 import com.nurhidayaatt.core.data.source.local.entity.TvShowEntity
 
 @Database(
-    entities = [MovieEntity::class, TvShowEntity::class],
+    entities = [MovieEntity::class, TvShowEntity::class, FavoriteEntity::class],
     version = 1,
     exportSchema = false
 )

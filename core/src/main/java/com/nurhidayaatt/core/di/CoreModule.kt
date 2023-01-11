@@ -1,6 +1,7 @@
 package com.nurhidayaatt.core.di
 
 import androidx.room.Room
+import com.nurhidayaatt.core.BuildConfig
 import com.nurhidayaatt.core.data.source.MainRepository
 import com.nurhidayaatt.core.data.source.local.LocalDataSource
 import com.nurhidayaatt.core.data.source.local.room.MainDatabase
@@ -41,10 +42,16 @@ val networkModule = module {
             .add(hostname, "sha256/++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=")
             .add(hostname, "sha256/KwccWaCgrnaw6tsrrSO61FgLacNgG2MMLq8GE6+oP5I=")
             .build()
+
+        val logging = HttpLoggingInterceptor()
+        if (BuildConfig.DEBUG) {
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+        } else logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
+
         OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .connectTimeout(120, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
+            .addInterceptor(logging)
+            .connectTimeout(2, TimeUnit.MINUTES)
+            .readTimeout(2, TimeUnit.MINUTES)
             .certificatePinner(certificatePinner)
             .build()
     }

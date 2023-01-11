@@ -10,14 +10,11 @@ import com.nurhidayaatt.core.domain.model.TvShow
 import com.nurhidayaatt.core.domain.repository.IMainRepository
 import com.nurhidayaatt.core.utils.DataMapper
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emitAll
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
-class MainRepository(
+class FakeMainRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
 ) : IMainRepository {

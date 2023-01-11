@@ -1,7 +1,9 @@
 package com.nurhidayaatt.moviecatalog.presentation.detail
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -15,16 +17,13 @@ import com.nurhidayaatt.moviecatalog.R
 import com.nurhidayaatt.moviecatalog.databinding.DetailFragmentBinding
 import com.nurhidayaatt.moviecatalog.utils.formatString
 import com.nurhidayaatt.moviecatalog.utils.showSnackBar
-import org.koin.android.ext.android.getKoin
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
+import org.koin.android.ext.android.inject
 
 class DetailFragment : Fragment() {
 
     private var _binding: DetailFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModelScope = getKoin().getOrCreateScope("Scope3", named("ViewModel"))
-    private val viewModel: DetailViewModel by viewModelScope.viewModel(this)
+    private val viewModel: DetailViewModel by inject()
 
     private val args: DetailFragmentArgs by navArgs()
     private var movie: Movie? = null
@@ -54,7 +53,7 @@ class DetailFragment : Fragment() {
     private fun initView(movie: Movie) {
         with(binding) {
             progressBar.visibility = View.GONE
-            Glide.with(this@DetailFragment).asBitmap().load(
+            Glide.with(requireContext()).asBitmap().load(
                 String.format(
                     resources.getString(R.string.format_url),
                     BACKDROP_BASE_URL,
@@ -68,7 +67,7 @@ class DetailFragment : Fragment() {
                 BitmapTransitionOptions.withCrossFade()
             ).into(ivBanner)
 
-            Glide.with(this@DetailFragment).asBitmap().load(
+            Glide.with(requireContext()).asBitmap().load(
                 String.format(
                     resources.getString(R.string.format_url),
                     POSTER_BASE_URL,
@@ -106,7 +105,7 @@ class DetailFragment : Fragment() {
     private fun initView(tvShow: TvShow) {
         with(binding) {
             progressBar.visibility = View.GONE
-            Glide.with(this@DetailFragment).asBitmap().load(
+            Glide.with(requireContext()).asBitmap().load(
                 String.format(
                     resources.getString(R.string.format_url),
                     BACKDROP_BASE_URL,
@@ -120,7 +119,7 @@ class DetailFragment : Fragment() {
                 BitmapTransitionOptions.withCrossFade()
             ).into(ivBanner)
 
-            Glide.with(this@DetailFragment).asBitmap().load(
+            Glide.with(requireContext()).asBitmap().load(
                 String.format(
                     resources.getString(R.string.format_url),
                     POSTER_BASE_URL,

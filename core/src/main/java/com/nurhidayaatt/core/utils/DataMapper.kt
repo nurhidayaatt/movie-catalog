@@ -99,4 +99,59 @@ object DataMapper {
         voteCount = input.voteCount,
         isFavorite = input.isFavorite
     )
+
+    // for unit test
+    fun mapMovieDomainToEntity(input: List<Movie>): List<MovieEntity> = input.map {
+        MovieEntity(
+            id = it.id,
+            overview = it.overview,
+            backdropPath = it.backdropPath,
+            posterPath = it.posterPath,
+            releaseDate = it.releaseDate,
+            title = it.title,
+            voteAverage = it.voteAverage,
+            voteCount = it.voteCount,
+            isFavorite = it.isFavorite
+        )
+    }
+
+    fun mapMovieDomainToResponses(input: List<Movie>): List<MovieResponse> = input.map {
+        MovieResponse(
+            id = it.id,
+            overview = it.overview,
+            backdropPath = it.backdropPath,
+            posterPath = it.posterPath,
+            releaseDate = it.releaseDate,
+            title = it.title,
+            voteAverage = it.voteAverage,
+            voteCount = it.voteCount,
+        )
+    }
+
+    fun mapTvShowDomainToEntity(input: List<TvShow>): List<TvShowEntity> = input.map {
+        TvShowEntity(
+            firstAirDate = it.firstAirDate,
+            id = it.id,
+            name = it.name,
+            overview = it.overview,
+            backdropPath = it.backdropPath,
+            posterPath = it.posterPath,
+            voteAverage = it.voteAverage,
+            voteCount = it.voteCount,
+            isFavorite = it.isFavorite
+        )
+    }
+
+    fun mapTvShowDomainToResponses(input: List<TvShow>): List<TvShowResponse> = input.map {
+        TvShowResponse(
+            firstAirDate = it.firstAirDate,
+            id = it.id,
+            name = it.name,
+            overview = it.overview,
+            backdropPath = it.backdropPath,
+            posterPath = it.posterPath,
+            voteAverage = it.voteAverage,
+            voteCount = it.voteCount
+        )
+    }
 }
